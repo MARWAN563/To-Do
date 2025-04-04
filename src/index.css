@@ -1,0 +1,143 @@
+body{
+text-wrap: wrap;
+padding: 0;
+margin:0;
+font-family: Arial, sans-serif;
+height: 100vh;
+
+
+background: linear-gradient(transparent,rgb(1, 83, 26),rgb(106, 236, 106),transparent);
+
+}
+
+
+#containerOfProject{
+
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+align-items: center;
+flex-direction: column;
+height: fit-content;
+padding: 1%;
+width: 80%;
+margin: auto;
+margin-top: 80px;
+border: rgb(6, 8, 7) 8px solid;
+border-radius: 30px;
+margin-bottom: 100px;
+background: url('https://media.giphy.com/media/XHELJ878xvgVHeNvJv/giphy.gif?cid=ecf05e47tk37mep0kfxx7bja9x0b17wn8eb3t3ju4i717vbw&ep=v1_gifs_related&rid=giphy');
+background-size: cover;
+background-position: 10% 50%;
+}
+
+.containerOfProjectInput{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+margin: 20px 0;
+width: 100%;
+}
+
+
+.containerOfProjectInput input{
+width: 70%;
+padding: 10px;
+border: 1px solid black;
+border-radius: 5px;
+font-family: 'Times New Roman', Times, serif;
+font-size: 1em;
+font-weight: bold;
+letter-spacing: 1.2px;
+
+}
+.containerOfProjectInput button{
+    width: 16%;
+    padding: 10px;
+    border-radius: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    background-color: black;
+    color: cyan;
+    box-shadow: 0px 0px 13px 6px cyan;
+    transition: 0.8s;
+    
+}
+
+.containerOfProjectInput button:hover{
+    background-color: cyan;
+    letter-spacing: 3px;
+    box-shadow: 0px 0px 20px 10px rgb(17, 8, 7);
+    color: black;
+
+}
+.ContentTODO{
+width: 100%;
+height: fit-content;
+display: flex;
+flex-wrap: wrap;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+flex-direction: row;
+
+}
+.ContentTODO h5{
+    width: 60%;
+    text-wrap: wrap;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: large;
+    line-break:normal;
+    white-space: wrap;
+    color: yellow;
+    word-wrap: break-word;
+    transition: all 0.5s;
+
+}
+
+.ContentTODO h5::first-letter{
+
+
+    margin-right: 12px;
+}
+
+
+
+
+#EandRbutton button{
+    
+    padding: 6px;
+    border-radius: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    background-color: black;
+    color: cyan;
+    box-shadow: 0px 0px 13px 6px cyan;
+    transition: 0.8s;
+
+}
+
+
+#EandRbutton .RemoveButton:hover{
+
+    background-color: rgb(241, 17, 17);
+    color: black;
+    box-shadow: 0px 0px 20px 10px rgb(17, 8, 7);
+    letter-spacing: 4px;
+}
+
+#EandRbutton .EditButton:hover{
+
+    background-color: rgb(6, 153, 31);
+    color: rgb(25, 0, 255);
+    box-shadow: 0px 0px 20px 10px rgb(18, 1, 255);
+    letter-spacing: 4px;
+}
+

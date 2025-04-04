@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Theme = () => {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(() =>{
+        try {
+            const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            return storedTasks;
+        } catch (error) {
+            console.error('Error initializing tasks:', error);
+            return [];
+    }
+
+    }
+    );
+
     const [task, setTask] = useState('');
-   
-   
     const [isEditing, setIsEditing] = useState(false);
     const [currentTaskIndex, setCurrentTaskIndex] = useState(null);
+    const [language, setLanguage] = useState('en'); // Default language is English
+
+    useEffect(() => {
+        try {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        } catch (error) {
+            console.error('Error saving tasks:', error);
+        }
+    }, [tasks]);
 
     const addTask = () => {
         if (task.trim()) {
@@ -38,24 +56,54 @@ const Theme = () => {
         }
     };
 
+    const toggleLanguage = () => {
+        setLanguage((prevLanguage) => (prevLanguage === 'en' ? 'ar' : 'en'));
+    };
+
+    const translations = {
+        en: {
+            title: 'To-Do List',
+            placeholder: 'Add a new task',
+            add: 'Add',
+            save: 'Save',
+            edit: 'Edit',
+            remove: 'Remove',
+            toggleLanguage: 'Switch to Arabic',
+        },
+        ar: {
+            title: 'قائمة المهام',
+            placeholder: 'أضف مهمة جديدة',
+            add: 'إضافة',
+            save: 'حفظ',
+            edit: 'تعديل',
+            remove: 'حذف',
+            toggleLanguage: 'التبديل إلى الإنجليزية',
+        },
+    };
+
+    const t = translations[language];
+
     return (
         <div style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
-            <h1>To-Do List</h1>
+            <button onClick={toggleLanguage} style={{ marginBottom: '10px' }}>
+                {t.toggleLanguage}
+            </button>
+            <h1>{t.title}</h1>
             <div style={{ marginBottom: '10px' }}>
                 <input
                     type="text"
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
-                    placeholder="Add a new task"
+                    placeholder={t.placeholder}
                     style={{ padding: '8px', width: '70%' }}
                 />
                 {isEditing ? (
                     <button onClick={saveTask} style={{ padding: '8px', marginLeft: '10px' }}>
-                        Save
+                        {t.save}
                     </button>
                 ) : (
                     <button onClick={addTask} style={{ padding: '8px', marginLeft: '10px' }}>
-                        Add
+                        {t.add}
                     </button>
                 )}
             </div>
@@ -75,10 +123,10 @@ const Theme = () => {
                         {t}
                         <div>
                             <button onClick={() => startEditing(index)} style={{ marginLeft: '10px' }}>
-                                Edit
+                                {translations[language].edit}
                             </button>
                             <button onClick={() => removeTask(index)} style={{ marginLeft: '10px' }}>
-                                Remove
+                                {translations[language].remove}
                             </button>
                         </div>
                     </li>
